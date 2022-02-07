@@ -193,7 +193,7 @@ class Effect {
 const effect = new Effect(matrixCanvas.width, matrixCanvas.height)
 
 let lastTime = 0
-const fps = 30
+const fps = 6
 const nextFrame = 1000 / fps
 let timer = 0
 
