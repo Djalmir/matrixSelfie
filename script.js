@@ -107,8 +107,8 @@ function init() {
 		c.drawImage(img, 0, 0, canvas.width, canvas.height)
 		imgCoordinates = c.getImageData(0, 0, canvas.width, canvas.height)
 		particleArray = []
-		for (let y = 0, y2 = imgCoordinates.height; y < y2; y += 4) {
-			for (let x = 0, x2 = imgCoordinates.width; x < x2; x += 4) {
+		for (let y = 0, y2 = imgCoordinates.height; y < y2; y += 5) {
+			for (let x = 0, x2 = imgCoordinates.width; x < x2; x += 5) {
 				if (imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4) + 3] > 128) {
 					let positionX = x
 					let positionY = y
