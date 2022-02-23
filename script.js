@@ -52,7 +52,7 @@ class Particle {
 		this.size = .9 * canvas.width / 100
 		this.baseX = x
 		this.baseY = y
-		this.density = Math.random() * 25 + 15
+		this.density = Math.random() * 25 + 24
 		this.color = color
 	}
 
