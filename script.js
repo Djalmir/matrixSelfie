@@ -47,12 +47,12 @@ window.addEventListener('resize', setAdjusts)
 
 class Particle {
 	constructor(x, y, color) {
-		this.x = x
-		this.y = y
-		this.size = .8 * canvas.width / 100
-		this.baseX = this.x
-		this.baseY = this.y
-		this.density = Math.random()*25+15
+		this.x = Math.random() * canvas.width * 2 - canvas.width
+		this.y = Math.random() * canvas.height * 2 - canvas.height
+		this.size = .9 * canvas.width / 100
+		this.baseX = x
+		this.baseY = y
+		this.density = Math.random() * 25 + 15
 		this.color = color
 	}
 
@@ -128,7 +128,7 @@ function animate() {
 		particleArray[a].draw()
 		particleArray[a].update()
 	}
-	
+
 	requestAnimationFrame(animate)
 }
 animate()
