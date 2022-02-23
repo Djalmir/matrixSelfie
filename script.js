@@ -1,8 +1,8 @@
 const canvas = document.querySelector('#canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = 477
-canvas.height = 523
+canvas.width = 210
+canvas.height = 210
 let imgCoordinates
 let particleArray = []
 
@@ -22,7 +22,6 @@ function mousemove(e) {
 		mouse.x = (e.x - bounds.x) * screenAdjustX
 		mouse.y = (e.y - bounds.y) * screenAdjustY
 	}
-	mouse.radius = canvas.width / 3
 }
 
 window.addEventListener('mousemove', mousemove)
@@ -40,7 +39,7 @@ window.addEventListener('touchend', () => {
 function setAdjusts() {
 	screenAdjustX = canvas.width / canvas.offsetWidth
 	screenAdjustY = canvas.height / canvas.offsetHeight
-	mouse.radius = canvas.width / 3
+	mouse.radius = 50
 }
 setAdjusts()
 
@@ -48,12 +47,12 @@ window.addEventListener('resize', setAdjusts)
 
 class Particle {
 	constructor(x, y, color) {
-		this.x = (canvas.width / 2 - 255) + x
-		this.y = (canvas.height / 2 - 230) + y
-		this.size = .85 * canvas.width / 100
+		this.x = x
+		this.y = y
+		this.size = .8 * canvas.width / 100
 		this.baseX = this.x
 		this.baseY = this.y
-		this.density = (Math.random() * 100) + 50
+		this.density = Math.random()*25+15
 		this.color = color
 	}
 
@@ -102,14 +101,16 @@ class Particle {
 
 function init() {
 	let img = new Image()
-	img.src = 'Djalmir.png'
+	img.src = 'Dj.png'
 	img.addEventListener('load', () => {
 		c.drawImage(img, 0, 0, canvas.width, canvas.height)
 		imgCoordinates = c.getImageData(0, 0, canvas.width, canvas.height)
 		particleArray = []
-		for (let y = 0, y2 = imgCoordinates.height; y < y2; y += 4) {
-			for (let x = 0, x2 = imgCoordinates.width; x < x2; x += 4) {
-				if (imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4) + 3] > 128) {
+		let y2 = imgCoordinates.height
+		let x2 = imgCoordinates.width
+		for (let y = 0; y < y2; y += 2) {
+			for (let x = 0; x < x2; x += 2) {
+				if (imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4) + 3] > 180) {
 					let positionX = x
 					let positionY = y
 					particleArray.push(new Particle(positionX, positionY, `rgba(${ imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4)] },${ imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4) + 1] },${ imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4) + 2] },${ imgCoordinates.data[(y * 4 * imgCoordinates.width) + (x * 4) + 3] })`))
@@ -123,11 +124,11 @@ init()
 
 function animate() {
 	c.clearRect(0, 0, canvas.width, canvas.height)
-	let opacityValue = 1
 	for (let a = 0; a < particleArray.length; a++) {
 		particleArray[a].draw()
 		particleArray[a].update()
 	}
+	
 	requestAnimationFrame(animate)
 }
 animate()
@@ -139,10 +140,10 @@ const matrixC = matrixCanvas.getContext('2d')
 matrixCanvas.width = 477
 matrixCanvas.height = 523
 
-let gradient = matrixC.createRadialGradient(matrixCanvas.width/2,matrixCanvas.height/2,90,matrixCanvas.width/2,matrixCanvas.height/2,250)
-gradient.addColorStop(0, '#03f')
-gradient.addColorStop(0.5, '#ff0')
-gradient.addColorStop(1, '#0f0')
+let gradient = matrixC.createRadialGradient(matrixCanvas.width / 2, matrixCanvas.height / 2, 90, matrixCanvas.width / 2, matrixCanvas.height / 2, 250)
+gradient.addColorStop(0, '#0033ff')
+gradient.addColorStop(0.5, '#ffff00')
+gradient.addColorStop(1, '#00ff00')
 
 class Symbol {
 	constructor(x, y, fontSize, canvasHeight) {
