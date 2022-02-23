@@ -19,7 +19,6 @@ body {
 
 #canvasContainer {
 	border-radius: 50%;
-	border: 2px solid #013;
 	background: #090909;
 	overflow: hidden;
 	max-width: 300px;
