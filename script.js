@@ -137,10 +137,10 @@ animate()
 const matrixCanvas = document.querySelector('#matrixCanvas')
 const matrixC = matrixCanvas.getContext('2d')
 
-matrixCanvas.width = 477
-matrixCanvas.height = 523
+matrixCanvas.width = 210
+matrixCanvas.height = 210
 
-let gradient = matrixC.createRadialGradient(matrixCanvas.width / 2, matrixCanvas.height / 2, 90, matrixCanvas.width / 2, matrixCanvas.height / 2, 250)
+let gradient = matrixC.createRadialGradient(matrixCanvas.width / 2, matrixCanvas.height / 2, 50, matrixCanvas.width / 2, matrixCanvas.height / 2, 100)
 gradient.addColorStop(0, '#0033ff')
 gradient.addColorStop(0.5, '#ffff00')
 gradient.addColorStop(1, '#00ff00')
@@ -171,7 +171,7 @@ class Effect {
 	constructor(canvasWidth, canvasHeight) {
 		this.canvasWidth = canvasWidth
 		this.canvasHeight = canvasHeight
-		this.fontSize = 25
+		this.fontSize = 10
 		this.columns = this.canvasWidth / this.fontSize
 		this.symbols = []
 		this.#initialize()
